@@ -1,0 +1,16 @@
+{
+  "ticket": [
+    {
+      "ID": "00000000-0000-0000-0000-000000000000",
+      "USER_ID": "00000000-0000-0000-0000-000000000000",
+      "NUMBER": 1,
+      "CREATION_DATE": "2017-11-27 09:40:31.069",
+      "NAME": "name",
+      "DESCRIPTION": "description",
+      "FROM_ADS": true,
+      "COMMENT": "comment",
+      "COMPLETION_DATE": null,
+      "STATUS": "OPEN"
+    }
+  ]
+}

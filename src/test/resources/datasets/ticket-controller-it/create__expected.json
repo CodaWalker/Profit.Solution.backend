@@ -1,0 +1,16 @@
+{
+  "ticket": [
+    {
+      "ID": "regex:[0-9A-Za-z]{8}-([0-9A-Za-z]{4}-){3}[0-9A-Za-z]{12}",
+      "USER_ID": "regex:[0-9A-Za-z]{8}-([0-9A-Za-z]{4}-){3}[0-9A-Za-z]{12}",
+      "NUMBER": 1,
+      "CREATION_DATE": "regex:.+",
+      "NAME": "name",
+      "DESCRIPTION": "description",
+      "FROM_ADS": true,
+      "COMMENT": "comment",
+      "COMPLETION_DATE": null,
+      "STATUS": "OPEN"
+    }
+  ]
+}
