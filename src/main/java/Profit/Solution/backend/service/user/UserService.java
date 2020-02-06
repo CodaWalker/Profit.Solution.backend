@@ -12,7 +12,6 @@ import java.util.UUID;
 /**
  * Сервис для работы с сущностью "Пользователь"
  *
- * @author Pavel Zaytsev
  */
 public interface UserService {
 

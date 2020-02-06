@@ -5,15 +5,17 @@ import lombok.*;
 
 import java.util.UUID;
 
-/** ДТО создания заявки */
+/**
+ * ДТО создания заявки
+ */
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 public class TicketCreateDto {
 
-//    @ApiModelProperty("Идентификатор пользователя")
-//    private UUID userId;
+    //    @ApiModelProperty("Идентификатор пользователя")
+    //    private UUID userId;
     @ApiModelProperty("Идентификатор отправитель заявки")
     private UUID sender_id;
 

@@ -27,6 +27,7 @@ public class TicketServiceImpl implements TicketService {
     private final TicketRepository ticketRepository;
     @Autowired
     private UserService userService;
+
     @Autowired
     public TicketServiceImpl(TicketRepository ticketRepository) {
         this.ticketRepository = ticketRepository;
@@ -37,8 +38,8 @@ public class TicketServiceImpl implements TicketService {
     public Ticket create(TicketCreateArgument ticketCreateArgument) {
         Ticket ticket;
         Validator.validateObjectParam(ticketCreateArgument, TicketError.TICKET_CREATE_ARGUMENT_IS_MANDATORY);
-        if(ticketCreateArgument.getOperator_id() == null){
-             ticket = Ticket.builder()
+        if (ticketCreateArgument.getOperator_id() == null) {
+            ticket = Ticket.builder()
                     .title(ticketCreateArgument.getTitle())
                     .sender(userService.getExisting(ticketCreateArgument.getSender_id()))
                     .recipient(null)
@@ -49,7 +50,7 @@ public class TicketServiceImpl implements TicketService {
                     .comment(ticketCreateArgument.getComment())
                     .build();
         } else {
-             ticket = Ticket.builder()
+            ticket = Ticket.builder()
                     .title(ticketCreateArgument.getTitle())
                     .sender(userService.getExisting(ticketCreateArgument.getSender_id()))
                     .recipient(userService.getExisting(ticketCreateArgument.getRecipient_id()))
@@ -69,7 +70,7 @@ public class TicketServiceImpl implements TicketService {
         Validator.validateObjectParam(ticketId, TicketError.TICKET_ID_IS_MANDATORY);
 
         return ticketRepository.findById(ticketId)
-                               .orElseThrow(() -> new EntityNotFoundException(TicketError.TICKET_NOT_FOUND));
+                .orElseThrow(() -> new EntityNotFoundException(TicketError.TICKET_NOT_FOUND));
     }
 
     @Override
@@ -79,6 +80,7 @@ public class TicketServiceImpl implements TicketService {
 
         return ticketRepository.findAll(pageable);
     }
+
     @Override
     public Ticket accepted(UUID id) {
         Ticket acceptedTicket = getExisting(id);
@@ -92,7 +94,7 @@ public class TicketServiceImpl implements TicketService {
         Validator.validateObjectParam(ticketUpdateArgument, TicketError.TICKET_UPDATE_ARGUMENT_IS_MANDATORY);
 
         Ticket updatingTicket = getExisting(ticketId);
-            updatingTicket.setTitle(ticketUpdateArgument.getTitle());
+        updatingTicket.setTitle(ticketUpdateArgument.getTitle());
 
         updatingTicket.setComment(ticketUpdateArgument.getComment());
         updatingTicket.setDescription(ticketUpdateArgument.getDescription());
@@ -102,22 +104,22 @@ public class TicketServiceImpl implements TicketService {
         updatingTicket.setOperator(userService.getExisting(ticketUpdateArgument.getOperator_id()));
         updatingTicket.setFromAds(ticketUpdateArgument.isFromAds());
 
-        if(updatingTicket.getStatus() != ticketUpdateArgument.getStatus()) {
+        if (updatingTicket.getStatus() != ticketUpdateArgument.getStatus()) {
             updatingTicket.setAccepted(false);
             updatingTicket.setStatus(ticketUpdateArgument.getStatus());
-        }else{
+        } else {
             updatingTicket.setAccepted(ticketUpdateArgument.getAccepted());
         }
 
         return ticketRepository.save(updatingTicket);
     }
+
     @Override
-    public  Page<Ticket> findMyTicketById(Integer page,Integer pageSize,UUID uuid) {
+    public Page<Ticket> findMyTicketById(Integer page, Integer pageSize, UUID uuid) {
         Pageable pageable;
-        if(page == null || pageSize == null) {
-             pageable = PageRequest.of(0, 10);
-        }
-        else{
+        if (page == null || pageSize == null) {
+            pageable = PageRequest.of(0, 10);
+        } else {
             pageable = PageRequest.of(page, pageSize);
         }
 
@@ -141,18 +143,16 @@ public class TicketServiceImpl implements TicketService {
     }
 
 
-
     @Override
     public List<Ticket> getAllWithoutPages() {
         return ticketRepository.findAll();
     }
 
     @Override
-    public Page<Ticket> getAllByAttr(Integer page,Integer pageSize,String string) {
+    public Page<Ticket> getAllByAttr(Integer page, Integer pageSize, String string) {
         Pageable pageable = PageRequest.of(page, pageSize);
-        return ticketRepository.findAllByTitle(pageable,string);
+        return ticketRepository.findAllByTitle(pageable, string);
     }
-
 
 
     @Override

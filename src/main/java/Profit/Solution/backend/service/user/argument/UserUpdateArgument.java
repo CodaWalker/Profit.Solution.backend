@@ -7,7 +7,9 @@ import lombok.Getter;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-/** Аргумент обновления пользователя */
+/**
+ * Аргумент обновления пользователя
+ */
 @Getter
 @Builder
 public class UserUpdateArgument {

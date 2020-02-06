@@ -7,7 +7,9 @@ import lombok.Getter;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-/** Аргумент поиска пользователя по параметрам */
+/**
+ * Аргумент поиска пользователя по параметрам
+ */
 @Getter
 @Builder
 public class UserSearchArgument {

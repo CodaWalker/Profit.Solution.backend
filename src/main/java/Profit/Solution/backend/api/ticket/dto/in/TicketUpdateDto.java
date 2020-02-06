@@ -9,7 +9,9 @@ import lombok.Setter;
 
 import java.util.UUID;
 
-/** ДТО обновления заявки */
+/**
+ * ДТО обновления заявки
+ */
 @Getter
 @Setter
 @Builder

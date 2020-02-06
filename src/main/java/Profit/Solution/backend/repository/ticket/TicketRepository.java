@@ -12,11 +12,17 @@ import java.util.UUID;
 
 public interface TicketRepository extends JpaRepository<Ticket, UUID>, QuerydslPredicateExecutor<Ticket> {
     Optional<Ticket> findById(UUID Id);
+
     List<Ticket> findAll();
+
     Page<Ticket> findAllByTitle(Pageable pageable, String title);
+
     Page<Ticket> findAllBySenderIdOrderById(Pageable pageable, UUID Id);
+
     Page<Ticket> findAllByRecipientIdOrderById(Pageable pageable, UUID Id);
+
     Page<Ticket> findAllByManagerIdOrderById(Pageable pageable, UUID Id);
+
     Page<Ticket> findAllByOperatorIdOrderById(Pageable pageable, UUID Id);
 
 }

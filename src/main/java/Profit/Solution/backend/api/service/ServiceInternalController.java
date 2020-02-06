@@ -30,6 +30,7 @@ public class ServiceInternalController {
         this.userService = userService;
         this.userMapper = userMapper;
     }
+
     @Value("${client.hostnameFull}")
     private String clientHostname;
 
@@ -46,13 +47,14 @@ public class ServiceInternalController {
                         .typeUser(dto.getTypeUser())
                         .build()));
     }
+
     @ApiOperation("Вход в систему")
     @GetMapping("/login")
     public UserDto login(Principal principal) {
         if (principal == null || principal.getName() == null) {
             return null;
         }
-                return userMapper.toDto(userService.findByUsername(principal.getName()));
+        return userMapper.toDto(userService.findByUsername(principal.getName()));
     }
 
     @GetMapping("activate/{code}")
@@ -60,8 +62,9 @@ public class ServiceInternalController {
         boolean isActivated = userService.activateUser(code);
 
         if (!isActivated) {
-            response.sendRedirect( String.format("http://%s/home", clientHostname) +"?activate=false"); }
-        else {
-            response.sendRedirect( String.format("http://%s/home", clientHostname) +"?activate=true"); }
+            response.sendRedirect(String.format("http://%s/home", clientHostname) + "?activate=false");
+        } else {
+            response.sendRedirect(String.format("http://%s/home", clientHostname) + "?activate=true");
+        }
     }
 }

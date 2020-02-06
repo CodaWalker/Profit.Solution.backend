@@ -1,6 +1,8 @@
 package Profit.Solution.backend.error;
 
-/** Ошибки заявок */
+/**
+ * Ошибки заявок
+ */
 public class TicketError {
 
     public static final String TICKET_NAME_IS_MANDATORY = "Наименование заявки является обязательным и не может быть пустым";

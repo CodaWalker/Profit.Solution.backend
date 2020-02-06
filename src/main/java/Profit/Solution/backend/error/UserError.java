@@ -1,6 +1,8 @@
 package Profit.Solution.backend.error;
 
-/** Ошибки пользователя */
+/**
+ * Ошибки пользователя
+ */
 public class UserError {
 
     public static final String USER_NAME_IS_MANDATORY = "Имя пользователя является обязательным и не может быть пустым";

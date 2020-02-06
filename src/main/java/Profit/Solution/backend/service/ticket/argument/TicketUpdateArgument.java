@@ -8,12 +8,14 @@ import lombok.Getter;
 
 import java.util.UUID;
 
-/** Аргумент обновления заявки */
+/**
+ * Аргумент обновления заявки
+ */
 @Getter
 @Builder
 public class TicketUpdateArgument {
 
-//    private final UUID userId;
+    //    private final UUID userId;
     private final UUID sender_id;
 
     private final UUID recipient_id;

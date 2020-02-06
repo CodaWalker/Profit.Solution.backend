@@ -7,12 +7,14 @@ import lombok.Getter;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-/** Аргумент поиска заявки по параметрам */
+/**
+ * Аргумент поиска заявки по параметрам
+ */
 @Getter
 @Builder
 public class TicketSearchArgument {
 
-//    private final UUID userId;
+    //    private final UUID userId;
     private final UUID sender_id;
 
     private String sender_username;

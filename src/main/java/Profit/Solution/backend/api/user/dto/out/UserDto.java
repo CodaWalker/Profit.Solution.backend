@@ -13,7 +13,6 @@ import java.util.UUID;
 /**
  * Полная ДТО для сущности "Заявка"
  *
- * @author Pavel Zaytsev
  */
 @Getter
 @Setter

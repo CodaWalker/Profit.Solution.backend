@@ -12,7 +12,7 @@ import java.util.UUID;
 
 /**
  * Полная ДТО для сущности "Заявка"
- * */
+ */
 @Getter
 @Setter
 @ApiModel("Заявка")

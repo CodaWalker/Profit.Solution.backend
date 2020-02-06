@@ -13,14 +13,16 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-/** ДТО поиска заявки */
+/**
+ * ДТО поиска заявки
+ */
 @Getter
 @Setter
 @Builder
 @AllArgsConstructor
 public class TicketSearchDto {
 
-//    @ApiModelProperty("Идентификатор пользователя")
+    //    @ApiModelProperty("Идентификатор пользователя")
 //    private UUID userId;
     @ApiModelProperty("Идентификатор отправитель заявки")
     private UUID sender_id;

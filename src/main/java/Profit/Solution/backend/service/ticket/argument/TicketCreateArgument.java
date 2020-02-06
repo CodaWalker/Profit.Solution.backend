@@ -7,7 +7,9 @@ import lombok.Getter;
 
 import java.util.UUID;
 
-/** Аргумент создания заявки */
+/**
+ * Аргумент создания заявки
+ */
 @Getter
 @Builder
 public class TicketCreateArgument {

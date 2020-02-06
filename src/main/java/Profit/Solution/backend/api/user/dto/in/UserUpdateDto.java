@@ -10,7 +10,9 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-/** ДТО обновления пользователя */
+/**
+ * ДТО обновления пользователя
+ */
 @Getter
 @Setter
 @Builder

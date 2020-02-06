@@ -7,7 +7,9 @@ import lombok.Getter;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-/** Аргумент создания пользователя */
+/**
+ * Аргумент создания пользователя
+ */
 @Getter
 @Builder
 public class UserCreateArgument {

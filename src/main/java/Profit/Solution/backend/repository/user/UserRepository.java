@@ -12,10 +12,16 @@ import java.util.UUID;
 
 public interface UserRepository extends JpaRepository<User, UUID>, QuerydslPredicateExecutor<User> {
     Optional<User> findByUsername(String username);
+
     Page<User> findAllByUsername(Pageable pageable, String username);
+
     Optional<User> findById(UUID Id);
+
     List<User> findAll();
+
     User findByActivationCode(String code);
-    Page<User> findAllByTypeUser(Pageable pageable,String typeUser);
+
+    Page<User> findAllByTypeUser(Pageable pageable, String typeUser);
+
     List<User> findAllByTypeUser(String typeUser);
 }

@@ -52,12 +52,12 @@ public class UserServiceImpl implements UserService {
         roles.add(Role.ADMIN);
         Validator.validateObjectParam(userCreateArgument, UserError.USER_CREATE_ARGUMENT_IS_MANDATORY);
         User user = User.builder()
-                              .username(userCreateArgument.getUsername())
-                              .password(new BCryptPasswordEncoder().encode(userCreateArgument.getPassword()))
-                              .email(userCreateArgument.getEmail())
-                                .typeUser(userCreateArgument.getTypeUser())
-                                .roles(roles)
-                              .build();
+                .username(userCreateArgument.getUsername())
+                .password(new BCryptPasswordEncoder().encode(userCreateArgument.getPassword()))
+                .email(userCreateArgument.getEmail())
+                .typeUser(userCreateArgument.getTypeUser())
+                .roles(roles)
+                .build();
         return userRepository.save(user);
     }
 
@@ -66,16 +66,18 @@ public class UserServiceImpl implements UserService {
     public User getExisting(UUID userId) {
         Validator.validateObjectParam(userId, UserError.USER_ID_IS_MANDATORY);
         return userRepository.findById(userId)
-                               .orElseThrow(() -> new EntityNotFoundException(UserError.USER_NOT_FOUND));
+                .orElseThrow(() -> new EntityNotFoundException(UserError.USER_NOT_FOUND));
     }
+
     @Override
     public User findByUsername(String username) {
         return userRepository.findByUsername(username).orElse(null);
     }
+
     @Override
     public Page<User> findAllByTypeUser(int pageNo, int pageSize, String typeUser) {
         Pageable pageable = PageRequest.of(pageNo, pageSize);
-        return userRepository.findAllByTypeUser(pageable,typeUser);
+        return userRepository.findAllByTypeUser(pageable, typeUser);
     }
 
     @Override
@@ -86,13 +88,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public Page<User> getAllByAttr(Integer page, Integer pageSize, String string) {
         Pageable pageable = PageRequest.of(page, pageSize);
-        return userRepository.findAllByUsername(pageable,string);
+        return userRepository.findAllByUsername(pageable, string);
     }
 
 
     @Override
     public void deleteUser(UUID id) {
-          userRepository.deleteById(id);
+        userRepository.deleteById(id);
     }
 
     @Override
@@ -143,11 +145,10 @@ public class UserServiceImpl implements UserService {
     }
 
 
-
     private void sendMessageUserActivate(User user) {
         if (!StringUtils.isEmpty(user.getEmail())) {
             String message = String.format(
-                    "Добро пожаловать!, %s! \n"  +
+                    "Добро пожаловать!, %s! \n" +
                             ".Для активации учетной записи в SD Solution, перейдтие по ссылке: http://%s/service/activate/%s",
                     user.getUsername(),
                     SHostname,
@@ -158,6 +159,7 @@ public class UserServiceImpl implements UserService {
             mailSender.send();
         }
     }
+
     private void sendMessUserActivateSuccess(User user) {
         if (!StringUtils.isEmpty(user.getEmail())) {
             // user.setRoles(Collections.singleton(Role.ADMIN));

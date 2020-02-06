@@ -32,7 +32,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //starts authorizing configurations.
                 .authorizeRequests()
                 //ignoring the guest's urls...
-                .antMatchers("/resources/**", "/error", "/js/**", "/service/**","/api/**").permitAll()
+                .antMatchers("/resources/**", "/error", "/js/**", "/service/**", "/api/**").permitAll()
                 //authenticate all remaining URLs.
                 .anyRequest().fullyAuthenticated()
                 .and()
@@ -46,6 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 //cross-side request forgery.
                 .csrf().disable();
     }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());

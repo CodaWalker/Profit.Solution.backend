@@ -13,7 +13,6 @@ import java.util.UUID;
 /**
  * Сервис для работы с сущностью "Заявка"
  *
- * @author Pavel Zaytsev
  */
 public interface TicketService {
 
@@ -27,13 +26,13 @@ public interface TicketService {
 
     Ticket update(UUID ticketId, TicketUpdateArgument ticketUpdateArgument);
 
-    Page<Ticket> findMyTicketById(Integer page,Integer pageSize,UUID uuid);
+    Page<Ticket> findMyTicketById(Integer page, Integer pageSize, UUID uuid);
 
     List<Ticket> getAllWithoutPages();
 
     void deleteTicket(UUID id);
 
-    Page<Ticket> getAllByAttr(Integer page,Integer pageSize, String string);
+    Page<Ticket> getAllByAttr(Integer page, Integer pageSize, String string);
 
     Ticket accepted(UUID id);
 }
